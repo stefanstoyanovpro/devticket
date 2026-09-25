@@ -1,2 +1,5 @@
 db.php
 .env
+*.pem
+certs/*.key
+certs/*.crt

@@ -1,5 +1,6 @@
 <?php
 require "db.php";
+require "includes.php";
 session_start();
 
 $error = "";
@@ -8,10 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST["username"]);
     $password = $_POST["password"];
 
-    if (strlen($username) < 3 || strlen($password) < 6) {
+    if (!isValidUsername($username) || !isValidPassword($password)) {
         $error = "Username must be 3+ chars, password 6+ chars.";
     } else {
-        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $hash = hashPassword($password);
 
         $stmt = $conn->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
         $stmt->bind_param("ss", $username, $hash);

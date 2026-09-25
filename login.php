@@ -1,5 +1,6 @@
 <?php
 require "db.php";
+require "includes.php";
 session_start();
 
 $error = "";
@@ -15,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user = $result->fetch_assoc();
     $stmt->close();
 
-    if ($user && password_verify($password, $user["password_hash"])) {
+    if ($user && verifyPassword($password, $user["password_hash"])) {
         $_SESSION["user_id"] = $user["id"];
         $_SESSION["username"] = $username;
         header("Location: index.php");

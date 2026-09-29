@@ -3,11 +3,15 @@ require "db.php";
 
 // Handle new ticket submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $title = $conn->real_escape_string($_POST["title"]);
-    $description = $conn->real_escape_string($_POST["description"]);
-    $priority = $conn->real_escape_string($_POST["priority"]);
+    $title = $_POST["title"];
+    $description = $_POST["description"];
+    $priority = $_POST["priority"];
 
-    $conn->query("INSERT INTO tickets (title, description, priority) VALUES ('$title', '$description', '$priority')");
+    $stmt = $conn->prepare("INSERT INTO tickets (title, description, priority) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $title, $description, $priority);
+    $stmt->execute();
+    $stmt->close();
+
     header("Location: index.php");
     exit;
 }

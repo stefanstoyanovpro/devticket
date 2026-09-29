@@ -1,14 +1,21 @@
 <?php
 require "db.php";
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit;
+}
 
 // Handle new ticket submission
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $title = $_POST["title"];
     $description = $_POST["description"];
     $priority = $_POST["priority"];
+    $user_id = $_SESSION["user_id"];
 
-    $stmt = $conn->prepare("INSERT INTO tickets (title, description, priority) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $title, $description, $priority);
+    $stmt = $conn->prepare("INSERT INTO tickets (title, description, priority, user_id) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sssi", $title, $description, $priority, $user_id);
     $stmt->execute();
     $stmt->close();
 
@@ -16,7 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     exit;
 }
 
-$result = $conn->query("SELECT * FROM tickets ORDER BY created_at DESC");
+$result = $conn->query("
+    SELECT tickets.*, users.username 
+    FROM tickets 
+    LEFT JOIN users ON tickets.user_id = users.id 
+    ORDER BY tickets.created_at DESC
+");
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,10 +42,14 @@ $result = $conn->query("SELECT * FROM tickets ORDER BY created_at DESC");
         .priority-low { border-left: 5px solid #2ecc71; }
         form { margin-bottom: 30px; }
         input, textarea, select { display: block; width: 100%; margin-bottom: 8px; padding: 6px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; }
     </style>
 </head>
 <body>
-    <h1>DevTicket</h1>
+    <div class="topbar">
+        <h1>DevTicket</h1>
+        <div>Logged in as <strong><?= htmlspecialchars($_SESSION["username"]) ?></strong> | <a href="logout.php">Logout</a></div>
+    </div>
 
     <form method="POST">
         <input type="text" name="title" placeholder="Ticket title" required>
@@ -52,7 +68,7 @@ $result = $conn->query("SELECT * FROM tickets ORDER BY created_at DESC");
             <strong><?= htmlspecialchars($row['title']) ?></strong> 
             (<?= $row['status'] ?>, <?= $row['priority'] ?> priority)
             <p><?= htmlspecialchars($row['description']) ?></p>
-            <small>Created: <?= $row['created_at'] ?></small>
+            <small>Created by <?= htmlspecialchars($row['username'] ?? 'unknown') ?> on <?= $row['created_at'] ?></small>
         </div>
     <?php endwhile; ?>
 </body>

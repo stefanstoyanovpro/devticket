@@ -14,16 +14,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $hash = hashPassword($password);
 
-        $stmt = $conn->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
-        $stmt->bind_param("ss", $username, $hash);
-
-        if ($stmt->execute()) {
+        try {
+            $stmt = $conn->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
+            $stmt->bind_param("ss", $username, $hash);
+            $stmt->execute();
+            $stmt->close();
             header("Location: login.php");
             exit;
-        } else {
+        } catch (mysqli_sql_exception $e) {
             $error = "Username already taken.";
         }
-        $stmt->close();
     }
 }
 ?>

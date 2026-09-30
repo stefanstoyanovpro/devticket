@@ -1,6 +1,6 @@
 # DevTicket
 
-A ticket-tracking app I built to practice, hands-on, the kind of work I do professionally as a SW/App/Cloud Tech Analyst at Accenture — server administration, AWS/Azure cloud management, security, and troubleshooting. At work I manage environments that already exist; here I wanted to build, secure, and deploy one myself, end to end, and deal with the real problems that come up along the way.
+A hands-on infrastructure project inspired by my experience as a Software/Application/Cloud Tech Analyst, where I worked with Linux/Windows environments, cloud infrastructure, monitoring, incidents, and troubleshooting.
 
 **Live demo:** https://devticket.duckdns.org:8443
 

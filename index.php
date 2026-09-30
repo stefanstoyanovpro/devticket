@@ -97,7 +97,7 @@ $result = $conn->query("
         <div class="ticket priority-<?= $row['priority'] ?>">
             <span class="badge badge-<?= $row['priority'] ?>"><?= strtoupper($row['priority']) ?></span>
             <span class="category-tag"><?= htmlspecialchars($row['category_name'] ?? 'Uncategorized') ?></span>
-            <strong><?= htmlspecialchars($row['title']) ?></strong>
+            <strong><a href="ticket.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['title']) ?></a></strong>
             (<?= $row['status'] ?>)
             <p><?= htmlspecialchars($row['description']) ?></p>
             <small>Impact: <?= $row['impact'] ?> · Urgency: <?= $row['urgency'] ?> · Created by <?= htmlspecialchars($row['username'] ?? 'unknown') ?> on <?= $row['created_at'] ?></small>

@@ -15,3 +15,12 @@ function hashPassword(string $password): string {
 function verifyPassword(string $password, string $hash): bool {
     return password_verify($password, $hash);
 }
+
+function calculatePriority(string $impact, string $urgency): string {
+    $matrix = [
+        'low'    => ['low' => 'low',    'medium' => 'low',    'high' => 'medium'],
+        'medium' => ['low' => 'low',    'medium' => 'medium', 'high' => 'high'],
+        'high'   => ['low' => 'medium', 'medium' => 'high',   'high' => 'critical'],
+    ];
+    return $matrix[$impact][$urgency] ?? 'medium';
+}

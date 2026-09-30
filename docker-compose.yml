@@ -25,5 +25,44 @@ services:
     depends_on:
       - db
 
+  node-exporter:
+    image: prom/node-exporter:latest
+    restart: "no"
+    ports:
+      - "9100:9100"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    restart: "no"
+    ports:
+      - "8081:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: "no"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: "no"
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+
 volumes:
   db_data:
+  prometheus_data:
+  grafana_data:

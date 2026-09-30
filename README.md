@@ -41,6 +41,10 @@ docker compose exec web composer install
 docker compose exec web ./vendor/bin/phpunit tests/
 ```
 
+## Backups
+
+Automated daily MySQL dump via cron (2 AM), keeping the last 7 backups. Tested restore process — verified by deleting live data and confirming full recovery from a backup file:
+
 ## Next up
 
 Edit/delete on tickets, more test coverage, reverse proxy setup if I add more projects to the same server.

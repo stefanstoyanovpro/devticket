@@ -30,20 +30,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Login - DevTicket</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 400px; margin: 60px auto; padding: 0 20px; }
-        input { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
-        .error { color: #e74c3c; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <?php if ($error): ?><p class="error"><?= htmlspecialchars($error) ?></p><?php endif; ?>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-    <p>No account? <a href="register.php">Register</a></p>
+    <div class="app-nav">
+        <span class="brand">DevTicket</span>
+    </div>
+    <div class="wrap" style="max-width:380px;">
+        <h1>Login</h1>
+        <?php if ($error): ?><p class="error"><?= htmlspecialchars($error) ?></p><?php endif; ?>
+        <form method="POST" class="card">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>No account? <a href="register.php">Register</a></p>
+    </div>
 </body>
 </html>

@@ -45,6 +45,10 @@ docker compose exec web ./vendor/bin/phpunit tests/
 
 Automated daily MySQL dump via cron (2 AM), keeping the last 7 backups. Tested restore process — verified by deleting live data and confirming full recovery from a backup file:
 
+## Monitoring
+
+Built out Prometheus + Grafana (node-exporter + cAdvisor) via Docker Compose, got it fully working — scraping, dashboards, the works. Don't run it 24/7 though: the t2.micro this sits on doesn't have the RAM for monitoring + app at the same time (found that out the hard way). Spins up on demand with `docker compose up -d node-exporter cadvisor prometheus grafana`.
+
 ## Next up
 
 Edit/delete on tickets, more test coverage, reverse proxy setup if I add more projects to the same server.

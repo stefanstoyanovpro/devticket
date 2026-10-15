@@ -8,7 +8,7 @@ The tickets are modeled on real incidents I work — disk alerts, access issues,
 
 ## Screenshots
 
-<img width="2385" height="1738" alt="Screenshot 2026-10-15 at 12 08 21" src="https://github.com/user-attachments/assets/780b99ea-73c0-41a4-931f-f7d9407e0889" />
+<img width="2937" height="1750" alt="Screenshot 2026-10-15 at 12 08 21 (1)" src="https://github.com/user-attachments/assets/46c24871-68d7-4f46-9a6c-2d190902422a" />
 
 ## What it is
 

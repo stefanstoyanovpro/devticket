@@ -14,9 +14,7 @@ ITSM-style ticket tracker. Category + impact + urgency → priority gets calcula
 
 ## Stack
 
-PHP 8.2 · MariaDB · Docker + Docker Compose · Apache · AWS EC2 · Let's Encrypt HTTPS · GitHub Actions CI
-
-## What went wrong
+Linux Debian · PHP 8.2 · MariaDB · Docker + Docker Compose · Apache · AWS EC2 · Let's Encrypt HTTPS · GitHub Actions CI
 
 ## What went wrong
 

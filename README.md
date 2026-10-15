@@ -8,6 +8,8 @@ I'm a Software/App/Cloud Tech Analyst (Linux/Windows, AWS/Azure, incidents). I p
 
 <img width="2937" height="1750" alt="Screenshot 2026-10-15 at 12 08 21 (2)" src="https://github.com/user-attachments/assets/4d2fb830-c8fc-4250-a8cd-f7553c37c3cd" />
 
+<img width="2929" height="1558" alt="Screenshot 2026-10-15 at 14 03 59" src="https://github.com/user-attachments/assets/43522f66-93bc-4b52-aae5-43bd0bbfe5b7" />
+
 ## What it is
 
 ITSM-style ticket tracker. Category + impact + urgency → priority gets calculated, not picked. Every ticket has a timeline for updates. Knowledge base for writing up problem → root cause → fix.

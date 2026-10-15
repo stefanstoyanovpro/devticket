@@ -1,14 +1,12 @@
 # DevTicket
 
-I work as a Software/App/Cloud Tech Analyst — Linux/Windows servers, AWS/Azure, incidents, troubleshooting. But always inside an environment someone else already built. I wanted to build and run one myself, start to finish, and deal with whatever broke without anyone to hand it off to.
-
-The tickets are modeled on real incidents I work — disk alerts, access issues, infra problems — not a generic to-do app with a login screen.
+I'm a Software/App/Cloud Tech Analyst (Linux/Windows, AWS/Azure, incidents). I put this together to run an environment myself instead of only supporting ones that already exist: a Debian server on AWS EC2 running Docker Compose, with a DuckDNS domain and a Let's Encrypt cert. The tickets are based on the kind of incidents I handle at work. Disk alerts, access issues, infra problems, etc.
 
 **Live demo:** https://devticket.duckdns.org:8443
 
 ## Screenshots
 
-<img width="2937" height="1750" alt="Screenshot 2026-10-15 at 12 08 21 (1)" src="https://github.com/user-attachments/assets/46c24871-68d7-4f46-9a6c-2d190902422a" />
+<img width="2937" height="1750" alt="Screenshot 2026-10-15 at 12 08 21 (2)" src="https://github.com/user-attachments/assets/4d2fb830-c8fc-4250-a8cd-f7553c37c3cd" />
 
 ## What it is
 

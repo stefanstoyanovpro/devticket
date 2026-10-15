@@ -8,7 +8,7 @@ The tickets are modeled on real incidents I work — disk alerts, access issues,
 
 ## Screenshots
 
-(ticket list showing "P1 – Critical Disk Utilization: Root Filesystem at 98%" — open, high priority)
+<img width="2385" height="1738" alt="Screenshot 2026-10-15 at 12 08 21" src="https://github.com/user-attachments/assets/780b99ea-73c0-41a4-931f-f7d9407e0889" />
 
 ## What it is
 
